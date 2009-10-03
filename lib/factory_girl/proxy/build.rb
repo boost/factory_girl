@@ -24,6 +24,11 @@ class Factory
       def result
         @instance
       end
+      
+      def result
+        run_callback(:after_build)
+        @instance
+      end
     end
   end
 end

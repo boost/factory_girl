@@ -1,3 +1,17 @@
+== Fork Additions
+
+This fork adds after_build and after_create to factories - useful for when you would like to modify the object after it has been built/saved, but before it is handed out of the factory.  Example usage:
+  
+  #define a user, and activate! after it is created
+  Factory.define :user do |u|
+    u.first_name 'John'
+    u.last_name  'Doe'
+    u.after_create do |o|
+      o.activate!
+    end
+  end
+
+
 = factory_girl
 
 factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies (saved instances, unsaved instances, attribute hashes, and stubbed objects), and support for multiple factories for the same class (user, admin_user, and so on), including factory inheritance.

@@ -1,6 +1,8 @@
 class Factory
 
   class Proxy #:nodoc:
+    attr_accessor :callbacks
+    
     def initialize(klass)
     end
 
@@ -12,6 +14,10 @@ class Factory
     end
 
     def associate(name, factory, attributes)
+    end
+    
+    def run_callback(name)
+      callbacks && callbacks[name] && callbacks[name].call(@instance)
     end
 
     # Generates an association using the current build strategy.
